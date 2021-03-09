@@ -13,19 +13,26 @@
       <div class="scene scene--card">
         <div class="card" @click="toggleFlip" :class="{is__Flipped: isFlipped}">
           <div class="card__face card__face--front">
-            <p v-for="question in questions">
-              {{question.question}}
+            <p>
+              {{chosenSet.question}}
             </p>
           </div>
           <div class="card__face card__face--back">
-            <p v-for="answer in questions">
-              {{answer.answer}}
+            <p>
+              {{chosenSet.answer}}
             </p>
           </div>
+        </div>
+          <div class="button__set">
+          <button @click="randomSet(); markRead();">New Question</button>
+          <button>Add a Question</button>
+          <button>Remove a Question</button>
+          <button>Set Objetive</button>
         </div>
       </div>
     </div>
 
+  <h4>Click New Question to Start!</h4>
 
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <script src="app.js"></script>
