@@ -1,7 +1,4 @@
-const app = Vue.createApp({
-    //houses data, functions, methods
-    //template: '<h2>I am the template</h2>' - used to inject into #app div on html page
-
+const app = Vue.createApp({ 
     data() {
         return{
             isFlipped: false,
@@ -14,7 +11,7 @@ const app = Vue.createApp({
                 {question:`How many cents are in $1`, answer:`100`, display: true },
                 {question:`What is 208 + 54?`, answer:`262`, display: true },
             ],
-            chosenSet: {}
+            chosenSet: {question: `Click New Question to Begin!`}
         }
     },
 
@@ -25,22 +22,20 @@ const app = Vue.createApp({
         toggleFlip() {
             this.isFlipped = !this.isFlipped
         },
-        randomSet(){
-            var chosenNumber = Math.floor(Math.random() * this.quiz.length);
-            return this.chosenSet = this.quiz[chosenNumber];
-        },
         markRead(){
             this.chosenSet.display = false
             console.log(this.chosenSet)
+        },
+        randomSet(){
+            var chosenNumber = Math.floor(Math.random() * this.filteredSet.length);
+            return this.chosenSet = this.filteredSet[chosenNumber];
         }
     },
     computed: {
         filteredSet(){
-            return this.chosenSet = this.chosenSet.filter((quiz) => quiz.display)
+            return this.quiz.filter((quiz) => quiz.display)
         }
     }
 })
-
-
 
 app.mount('#app')
